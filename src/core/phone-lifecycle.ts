@@ -28,7 +28,10 @@ export async function ensurePhone(): Promise<void> {
   registerBuiltinApps();
   mountPhoneApp();
 
-  const floatSettings = _.get(extension_settings, 'sillytavernPhone.floatBall');
+  const floatSettings = _.get(
+    typeof extension_settings !== 'undefined' ? extension_settings : {},
+    'sillytavernPhone.floatBall',
+  );
   if (floatSettings?.floatBallEnabled !== false) {
     createFloatBall();
     setupFloatBallResizeHandler();

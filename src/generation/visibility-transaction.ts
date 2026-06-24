@@ -1,4 +1,5 @@
 import type { PendingVisibilityRecovery } from '@/types';
+import { getSettings, setSettings } from '@/util/settings';
 
 /**
  * 计算 SHA-256 哈希
@@ -72,13 +73,12 @@ async function createRecoveryLog(
  */
 function saveRecoveryLog(recovery: PendingVisibilityRecovery): void {
   const current =
-    (_.get(extension_settings, 'sillytavernPhone.pendingVisibilityRecoveries') as Record<
+    (getSettings('sillytavernPhone.pendingVisibilityRecoveries') as Record<
       string,
       PendingVisibilityRecovery
     >) ?? {};
   current[recovery.scopeId] = recovery;
-  _.set(extension_settings, 'sillytavernPhone.pendingVisibilityRecoveries', klona(current));
-  saveSettingsDebounced();
+  setSettings('sillytavernPhone.pendingVisibilityRecoveries', current);
 }
 
 /**
@@ -86,13 +86,12 @@ function saveRecoveryLog(recovery: PendingVisibilityRecovery): void {
  */
 function clearRecoveryLog(scopeId: string): void {
   const current =
-    (_.get(extension_settings, 'sillytavernPhone.pendingVisibilityRecoveries') as Record<
+    (getSettings('sillytavernPhone.pendingVisibilityRecoveries') as Record<
       string,
       PendingVisibilityRecovery
     >) ?? {};
   delete current[scopeId];
-  _.set(extension_settings, 'sillytavernPhone.pendingVisibilityRecoveries', klona(current));
-  saveSettingsDebounced();
+  setSettings('sillytavernPhone.pendingVisibilityRecoveries', current);
 }
 
 /**
@@ -221,7 +220,7 @@ export async function beginVisibilityTransaction(
  */
 export async function checkAndRecoverPending(scopeId: string): Promise<boolean> {
   const pendings =
-    (_.get(extension_settings, 'sillytavernPhone.pendingVisibilityRecoveries') as Record<
+    (getSettings('sillytavernPhone.pendingVisibilityRecoveries') as Record<
       string,
       PendingVisibilityRecovery
     >) ?? {};

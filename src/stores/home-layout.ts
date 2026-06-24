@@ -1,5 +1,6 @@
 import type { HomeScreenLayout } from '@/types';
 import { BUILTIN_APPS } from '@/constants/app-defaults';
+import { getSettings, setSettings } from '@/util/settings';
 
 const SETTINGS_KEY = 'sillytavernPhone.homeLayout';
 
@@ -14,12 +15,11 @@ function getDefaultLayout(): HomeScreenLayout {
 
 export const useHomeLayoutStore = defineStore('homeLayout', () => {
   const layout = ref<HomeScreenLayout>(
-    (_.get(extension_settings, SETTINGS_KEY) as HomeScreenLayout) ?? getDefaultLayout(),
+    getSettings<HomeScreenLayout>(SETTINGS_KEY) ?? getDefaultLayout(),
   );
 
   function persist() {
-    _.set(extension_settings, SETTINGS_KEY, klona(toRaw(layout.value)));
-    saveSettingsDebounced();
+    setSettings(SETTINGS_KEY, toRaw(layout.value));
   }
 
   function getVisibleApps() {

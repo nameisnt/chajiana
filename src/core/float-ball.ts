@@ -1,4 +1,5 @@
 import type { FloatBallSettings } from '@/types';
+import { getSettings, setSettings } from '@/util/settings';
 
 const BALL_ROOT_CLASS = 'pc-float-ball-root';
 const BALL_CLASS = 'pc-float-ball';
@@ -15,23 +16,22 @@ let dragState: {
 
 let cleanupFns: Array<() => void> = [];
 
-function getSettings(): FloatBallSettings {
-  return (_.get(extension_settings, 'sillytavernPhone.floatBall') as FloatBallSettings) ?? {
+function getFloatSettings(): FloatBallSettings {
+  return getSettings<FloatBallSettings>('sillytavernPhone.floatBall') ?? {
     floatBallEnabled: true,
     floatBallSize: 44,
     floatBallColor: '#007aff',
   };
 }
 
-function saveSettings(settings: FloatBallSettings): void {
-  _.set(extension_settings, 'sillytavernPhone.floatBall', klona(settings));
-  saveSettingsDebounced();
+function saveFloatSettings(settings: FloatBallSettings): void {
+  setSettings('sillytavernPhone.floatBall', settings);
 }
 
 export function createFloatBall(): void {
   if (ballRoot) return;
 
-  const settings = getSettings();
+  const settings = getFloatSettings();
   if (!settings.floatBallEnabled) return;
 
   ballRoot = document.createElement('div');
@@ -149,10 +149,10 @@ function bindDrag(btn: HTMLButtonElement, root: HTMLElement, settings: FloatBall
       btn.style.left = `${pos.left}px`;
       btn.style.top = `${pos.top}px`;
 
-      const s = getSettings();
+      const s = getFloatSettings();
       s.floatBallX = pos.left;
       s.floatBallY = pos.top;
-      saveSettings(s);
+      saveFloatSettings(s);
     }
 
     if (!dragState.isDragging) {
@@ -177,7 +177,7 @@ function bindDrag(btn: HTMLButtonElement, root: HTMLElement, settings: FloatBall
 
 function reclampPosition(): void {
   if (!ballBtn) return;
-  const settings = getSettings();
+  const settings = getFloatSettings();
   const size = settings.floatBallSize;
   const left = Number.parseFloat(ballBtn.style.left);
   const top = Number.parseFloat(ballBtn.style.top);
@@ -189,7 +189,7 @@ function reclampPosition(): void {
 
 export function updateFloatBallStyle(): void {
   if (!ballBtn) return;
-  const settings = getSettings();
+  const settings = getFloatSettings();
   applyBallStyle(settings);
 }
 

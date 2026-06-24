@@ -1,12 +1,13 @@
+import { getSettings, setSettings } from '@/util/settings';
+
 export const useThemeStore = defineStore('theme', () => {
   const theme = ref<'light' | 'dark'>(
-    (_.get(extension_settings, 'sillytavernPhone.theme') as 'light' | 'dark') ?? 'light',
+    getSettings<'light' | 'dark'>('sillytavernPhone.theme') ?? 'light',
   );
 
   function setTheme(t: 'light' | 'dark') {
     theme.value = t;
-    _.set(extension_settings, 'sillytavernPhone.theme', t);
-    saveSettingsDebounced();
+    setSettings('sillytavernPhone.theme', t);
     applyTheme();
   }
 
