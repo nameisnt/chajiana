@@ -1,0 +1,201 @@
+@import 'tailwindcss';
+
+/* ===== 手机壳 CSS 变量 ===== */
+#phone-creative-root {
+  isolation: isolate;
+}
+
+.phone-root {
+  --phone-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
+  --phone-font-mono: 'SF Mono', 'JetBrains Mono', 'Fira Code', 'Cascadia Code',
+    monospace;
+
+  font-family: var(--phone-font-sans);
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2147483647;
+}
+
+/* ===== 亮色主题 ===== */
+.phone-root[data-theme='light'] {
+  --pc-bg: #f2f2f7;
+  --pc-card-bg: rgba(255, 255, 255, 0.8);
+  --pc-text: #1c1c1e;
+  --pc-text-secondary: #6e6e73;
+  --pc-accent: #007aff;
+  --pc-border: rgba(0, 0, 0, 0.06);
+  --pc-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --pc-card-border: rgba(0, 0, 0, 0.04);
+  --pc-input-bg: rgba(0, 0, 0, 0.04);
+
+  background-color: var(--pc-bg);
+  color: var(--pc-text);
+}
+
+/* ===== 暗色主题 ===== */
+.phone-root[data-theme='dark'] {
+  --pc-bg: #1c1c1e;
+  --pc-card-bg: rgba(255, 255, 255, 0.08);
+  --pc-text: #f5f5f7;
+  --pc-text-secondary: #98989d;
+  --pc-accent: #0a84ff;
+  --pc-border: rgba(255, 255, 255, 0.08);
+  --pc-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --pc-card-border: rgba(255, 255, 255, 0.06);
+  --pc-input-bg: rgba(255, 255, 255, 0.06);
+
+  background-color: var(--pc-bg);
+  color: var(--pc-text);
+}
+
+/* ===== 毛玻璃卡片 ===== */
+.pc-glass-card {
+  background: var(--pc-card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--pc-card-border);
+  border-radius: 16px;
+  box-shadow: var(--pc-shadow);
+}
+
+/* ===== 通用按钮 ===== */
+.pc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  color: #fff;
+  background: var(--pc-accent);
+}
+.pc-btn:active {
+  transform: scale(0.96);
+  opacity: 0.85;
+}
+.pc-btn-secondary {
+  background: var(--pc-card-bg);
+  color: var(--pc-text);
+  border: 1px solid var(--pc-border);
+}
+
+/* ===== 通用输入框 ===== */
+.pc-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-input-bg);
+  color: var(--pc-text);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s;
+  font-family: inherit;
+}
+.pc-input:focus {
+  border-color: var(--pc-accent);
+}
+
+/* ===== 通用文本域 ===== */
+.pc-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--pc-border);
+  background: var(--pc-input-bg);
+  color: var(--pc-text);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color 0.15s;
+}
+.pc-textarea:focus {
+  border-color: var(--pc-accent);
+}
+
+/* ===== 滚动条 ===== */
+.phone-root ::-webkit-scrollbar {
+  width: 4px;
+}
+.phone-root ::-webkit-scrollbar-track {
+  background: transparent;
+}
+.phone-root ::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.3);
+  border-radius: 2px;
+}
+
+/* ===== 过渡动画 ===== */
+.pc-page-enter-active,
+.pc-page-leave-active {
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+.pc-page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.pc-page-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* ===== 间距工具 ===== */
+.pc-p-sm {
+  padding: 12px;
+}
+.pc-p-md {
+  padding: 16px;
+}
+.pc-p-lg {
+  padding: 20px;
+}
+.pc-gap-sm {
+  gap: 8px;
+}
+.pc-gap-md {
+  gap: 12px;
+}
+.pc-gap-lg {
+  gap: 16px;
+}
+
+/* ===== 重置 SillyTavern 样式污染 ===== */
+#phone-creative-root button {
+  font-family: inherit;
+}
+#phone-creative-root input[type='text'],
+#phone-creative-root input[type='search'],
+#phone-creative-root textarea {
+  font-family: inherit;
+}
+
+/* ===== 悬浮球样式 ===== */
+.pc-float-ball {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ===== 移动端适配 ===== */
+@media (max-width: 768px) {
+  .phone-root {
+    right: 4vw;
+    left: 4vw;
+    top: 7.5vh;
+    transform: none;
+  }
+}
+
+/* ===== 隐藏状态 ===== */
+#phone-creative-root[hidden] {
+  display: none !important;
+}

@@ -1,0 +1,55 @@
+import type { BaguRule } from '@/types';
+
+/** 默认八股检测规则 */
+export const DEFAULT_BAGU_RULES: BaguRule[] = [
+  {
+    id: 'default-word-1',
+    type: 'word',
+    find: '不禁',
+    replace: '',
+    enabled: false,
+    description: '检测"不禁"',
+    createdAt: '2026-01-01T00:00:00.000Z',
+    updatedAt: '2026-01-01T00:00:00.000Z',
+  },
+  {
+    id: 'default-word-2',
+    type: 'word',
+    find: '微微一笑',
+    replace: '',
+    enabled: false,
+    description: '检测"微微一笑"',
+    createdAt: '2026-01-01T00:00:00.000Z',
+    updatedAt: '2026-01-01T00:00:00.000Z',
+  },
+  {
+    id: 'default-word-3',
+    type: 'word',
+    find: '在这个',
+    replace: '',
+    enabled: false,
+    description: '检测"在这个"',
+    createdAt: '2026-01-01T00:00:00.000Z',
+    updatedAt: '2026-01-01T00:00:00.000Z',
+  },
+  {
+    id: 'default-pattern-1',
+    type: 'pattern',
+    find: '他.*深深地.*了一[口气]',
+    replace: '',
+    enabled: false,
+    description: '检测"深深地...了一口气"句式',
+    createdAt: '2026-01-01T00:00:00.000Z',
+    updatedAt: '2026-01-01T00:00:00.000Z',
+  },
+  {
+    id: 'default-pattern-2',
+    type: 'pattern',
+    find: '眼中.*闪过.*一抹.*之色',
+    replace: '',
+    enabled: false,
+    description: '检测"眼中闪过一抹...之色"句式',
+    createdAt: '2026-01-01T00:00:00.000Z',
+    updatedAt: '2026-01-01T00:00:00.000Z',
+  },
+];

@@ -1,0 +1,19 @@
+node_modules
+
+.DS_Store
+Thumbs.db
+
+*.log
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 设计文档（仅开发参考）
+docs/
+酒馆手机功能与实现方案.md
+废弃方案.md
+
+# 参考项目
+可参考拓展/
