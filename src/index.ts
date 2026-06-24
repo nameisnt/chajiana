@@ -31,17 +31,9 @@ async function initPlugin(): Promise<void> {
   }
 }
 
-// 在 APP_READY 之后初始化
+// jQuery ready 时直接初始化。loading_order 120 确保 TavernHelper 已就绪。
 $(async () => {
-  // 等待 SillyTavern 的 APP_READY 事件
-  if (typeof eventSource !== 'undefined') {
-    eventSource.once('APP_READY', () => {
-      initPlugin();
-    });
-  } else {
-    // 如果 eventSource 不可用，等待 TavernHelper 后初始化
-    initPlugin();
-  }
+  await initPlugin();
 });
 
 // 暴露 API 给外部
