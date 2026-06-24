@@ -16,8 +16,6 @@ jobs:
     steps:
       # checkout
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: JesseTG/rm@v1.0.3
         with:
           path: dist
@@ -90,6 +88,7 @@ jobs:
         with:
           default_author: github_actions
           message: '[bot] Bundle'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - if: ${{ github.ref_type == 'tag' }}
         shell: bash
         run: |-
