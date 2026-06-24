@@ -1,3 +1,4 @@
+import { extension_settings } from '@sillytavern/scripts/extensions';
 /**
  * SillyTavern 文件存储 API 封装
  * 使用 /api/files/upload|verify|delete + GET 端点

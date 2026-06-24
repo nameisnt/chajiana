@@ -2,7 +2,6 @@ declare const hljs: typeof import('highlight.js').default;
 declare const Popper: typeof import('@popperjs/core');
 
 // SillyTavern globals
-declare const extension_settings: Record<string, unknown>;
 declare function saveSettingsDebounced(): void;
 declare function saveChatDebounced(): void;
 

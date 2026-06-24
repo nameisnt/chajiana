@@ -1,3 +1,4 @@
+import { extension_settings } from '@sillytavern/scripts/extensions';
 import type { ScopeBinding } from '@/types';
 import { loadIndex, commitIndex } from './storage-index';
 

@@ -1,3 +1,4 @@
+import { extension_settings } from '@sillytavern/scripts/extensions';
 import { createFloatBall, destroyFloatBall, hideFloatBall, showFloatBall, setupFloatBallResizeHandler } from './float-ball';
 import { createPhoneRoot, getPhoneRoot, mountPhoneApp, showPhoneRoot, hidePhoneRoot, unmountPhoneApp } from './phone-root';
 import { registerBuiltinApps, disposeAllApps } from './app-registry';
@@ -29,7 +30,7 @@ export async function ensurePhone(): Promise<void> {
   mountPhoneApp();
 
   const floatSettings = _.get(
-    typeof extension_settings !== 'undefined' ? extension_settings : {},
+    extension_settings || {},
     'sillytavernPhone.floatBall',
   );
   if (floatSettings?.floatBallEnabled !== false) {
