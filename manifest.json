@@ -5,7 +5,7 @@
   "dependencies": ["third-party/JS-Slash-Runner"],
   "optional": [],
   "js": "dist/index.js",
-  "css": "dist/index.css",
+  "css": "dist/style.css",
   "author": "酒馆手机开发组",
   "version": "1.0.0",
   "homePage": "https://github.com/nameisnt/chajiana",

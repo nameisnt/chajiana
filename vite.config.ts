@@ -77,6 +77,7 @@ export default defineConfig(({ mode }) => ({
   },
 
   build: {
+    cssCodeSplit: false,
     rollupOptions: {
       input: 'src/index.ts',
       output: {
