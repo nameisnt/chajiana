@@ -28,6 +28,7 @@ export async function ensurePhone(): Promise<void> {
   createPhoneRoot();
   registerBuiltinApps();
   mountPhoneApp();
+  hidePhoneRoot(); // 初始隐藏手机，仅显示悬浮球
 
   const floatSettings = _.get(
     extension_settings || {},
