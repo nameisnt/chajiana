@@ -10,7 +10,6 @@
         <component
           v-else
           :is="currentAppComponent"
-          v-if="currentAppComponent"
           :key="navStore.currentNav?.appId"
         />
       </KeepAlive>
