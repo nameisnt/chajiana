@@ -36,7 +36,7 @@ export function createFloatBall(): void {
 
   ballRoot = document.createElement('div');
   ballRoot.className = BALL_ROOT_CLASS;
-  ballRoot.style.cssText = 'position:fixed;z-index:2147482000;pointer-events:none;';
+  ballRoot.style.cssText = 'position:fixed;inset:0;z-index:2147482000;pointer-events:none;';
 
   ballBtn = document.createElement('button');
   ballBtn.type = 'button';
