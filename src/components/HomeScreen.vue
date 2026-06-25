@@ -1,5 +1,8 @@
 <template>
-  <div class="pc-home-screen">
+  <div class="pc-home-screen" style="background:#fff;display:flex;flex-direction:column;flex:1;min-height:0">
+    <div style="background:#ff0;padding:8px;font-size:14px;color:#000;border:2px solid red">
+      HS: {{ visibleApps.length }} apps | dock: {{ layoutStore.layout.dockApps.length }}
+    </div>
     <div class="pc-home-content">
       <AppGrid :app-ids="visibleApps" @open-app="handleOpenApp" />
     </div>
