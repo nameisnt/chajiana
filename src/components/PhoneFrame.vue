@@ -1,6 +1,6 @@
 <template>
   <div class="phone-root" :data-theme="theme">
-    <div class="phone-shell">
+    <div class="phone-shell" style="background:#f2f2f7">
       <slot />
     </div>
   </div>
