@@ -47,6 +47,14 @@ export function unmountPhoneApp(): void {
 export function showPhoneRoot(): void {
   if (rootEl) {
     rootEl.removeAttribute('hidden');
+    // 诊断：直接写 DOM 确认 root 可见
+    if (!document.getElementById('pc-diag')) {
+      const diag = document.createElement('div');
+      diag.id = 'pc-diag';
+      diag.style.cssText = 'position:fixed;top:10px;left:10px;z-index:2147483648;background:red;color:#fff;padding:8px 16px;font-size:14px;border-radius:8px;pointer-events:none';
+      diag.textContent = 'ROOT VISIBLE';
+      document.body.appendChild(diag);
+    }
   }
 }
 
