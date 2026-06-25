@@ -1,10 +1,7 @@
 <template>
   <PhoneFrame>
     <TopBar />
-    <div class="pc-content-area" style="background:#fff;color:#000;padding:16px;font-size:16px;overflow-y:auto">
-      <div style="background:#00ff00;padding:12px;margin-bottom:8px;border:3px solid #000;font-weight:bold">
-        TEST: HomeScreen below, {{ navStore.stack.length === 0 ? 'home' : 'app' }}
-      </div>
+    <div class="pc-content-area">
       <KeepAlive>
         <HomeScreen
           v-if="navStore.stack.length === 0"

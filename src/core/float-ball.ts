@@ -156,11 +156,6 @@ function bindDrag(btn: HTMLButtonElement, root: HTMLElement, settings: FloatBall
     }
 
     if (!dragState.isDragging) {
-      // 诊断：确认点击触发
-      const diag = document.createElement('div');
-      diag.style.cssText = 'position:fixed;top:50px;left:10px;z-index:2147483648;background:blue;color:#fff;padding:8px 16px;font-size:14px;border-radius:8px';
-      diag.textContent = 'FLOAT CLICKED';
-      document.body.appendChild(diag);
       import('@/core/phone-lifecycle').then((m) => m.showPhone());
     }
 

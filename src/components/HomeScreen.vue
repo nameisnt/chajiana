@@ -33,7 +33,7 @@ function handleOpenApp(appId: string) {
 .pc-home-screen {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1; min-height: 0;
 }
 .pc-home-content {
   flex: 1;
