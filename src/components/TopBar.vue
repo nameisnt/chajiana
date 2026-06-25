@@ -1,5 +1,5 @@
 <template>
-  <header class="pc-topbar">
+  <header class="pc-topbar" style="color:#1c1c1e;display:flex;align-items:center;height:48px;padding:0 8px;background:#f2f2f7">
     <div class="pc-topbar-left">
       <button
         type="button"

@@ -7,10 +7,10 @@
       class="pc-app-icon-btn"
       @click="$emit('openApp', appId)"
     >
-      <div class="pc-app-icon">
-        <i :class="getAppIcon(appId)"></i>
+      <div class="pc-app-icon" style="background:#007aff;color:#fff;display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:14px">
+        <i :class="getAppIcon(appId)" style="font-size:24px;color:#fff"></i>
       </div>
-      <span class="pc-app-label">{{ getAppName(appId) }}</span>
+      <span class="pc-app-label" style="color:#1c1c1e;font-size:12px;margin-top:4px">[{{ getAppName(appId) }}]</span>
     </button>
   </div>
 </template>

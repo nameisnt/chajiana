@@ -6,9 +6,10 @@
         :key="appId"
         type="button"
         class="pc-dock-btn"
+        style="width:48px;height:48px;border-radius:12px;background:rgba(0,0,0,0.08);color:#1c1c1e;border:none;font-size:22px;display:flex;align-items:center;justify-content:center;margin:0 4px"
         @click="$emit('openApp', appId)"
       >
-        <i :class="getAppIcon(appId)"></i>
+        <i :class="getAppIcon(appId)" style="color:#1c1c1e"></i>
       </button>
     </div>
   </div>

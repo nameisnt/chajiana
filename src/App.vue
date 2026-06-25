@@ -1,8 +1,7 @@
 <template>
   <PhoneFrame>
     <TopBar />
-    <div class="pc-content-area" style="background:#f00;color:#fff;padding:20px;font-size:20px">
-      DEBUG: Vue mounted. Stack: {{ navStore.stack.length }}, Apps: {{ visibleCount }}
+    <div class="pc-content-area">
       <KeepAlive>
         <HomeScreen
           v-if="navStore.stack.length === 0"
@@ -23,7 +22,6 @@
 <script setup lang="ts">
 import { useNavigationStore } from '@/stores/navigation';
 import { useThemeStore } from '@/stores/theme';
-import { useHomeLayoutStore } from '@/stores/home-layout';
 import { getCachedModule, loadAppModule } from '@/core/app-registry';
 import type { Component } from 'vue';
 import PhoneFrame from '@/components/PhoneFrame.vue';
@@ -32,12 +30,8 @@ import HomeScreen from '@/components/HomeScreen.vue';
 
 const navStore = useNavigationStore();
 const themeStore = useThemeStore();
-const layoutStore = useHomeLayoutStore();
-
 const currentAppComponent = ref<Component | null>(null);
 const loadedAppId = ref<string | null>(null);
-
-const visibleCount = computed(() => layoutStore.getVisibleApps().length);
 
 async function onOpenApp(appId: string) {
   if (loadedAppId.value === appId && currentAppComponent.value) return;
@@ -51,7 +45,6 @@ async function onOpenApp(appId: string) {
 
 onMounted(() => {
   themeStore.applyTheme();
-  console.log('[酒馆手机] App mounted, visible apps:', visibleCount.value);
 });
 </script>
 
